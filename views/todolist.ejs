@@ -1,0 +1,18 @@
+<%- include("headers") -%>
+<h1 class="todolist-header"><%= typeofday %></h1>
+<div class="list-content">
+<ul>
+    <%  for( i = 0; i < newcontent.length; i++) { %>
+        <div class="item">
+        <input type="checkbox">
+        <p> <%= newcontent[i] %></p>
+        </div>
+    <% } %>
+    <form action="/" method="POST">
+        <div class="lastman">
+      <input type="text" placeholder="New-Item" autocomplete="off" name="add">
+       <button type="submit" name="button" class="butt">+</button>
+    </div></form>
+</ul>
+</div>
+<%- include("footer") -%>

@@ -1,0 +1,18 @@
+<%- include("headers") -%>
+<h1 class="todolist-header"><%= mytitle %></h1>
+<div class="list-content">
+<ul>
+    <%  for( i = 0; i < workcontent.length; i++) { %>
+        <div class="item">
+        <input type="checkbox">
+        <p> <%= workcontent[i] %></p>
+        </div>
+    <% } %>
+    <form action="/" method="POST">
+        <div class="lastman">
+      <input type="text" placeholder="New-Item" autocomplete="off" name="second">
+       <button type="submit" name="list" class="butt" value="worklist">+</button>
+    </div></form>
+</ul>
+</div>
+<%- include("footer") -%>
