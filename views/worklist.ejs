@@ -2,12 +2,14 @@
 <h1 class="todolist-header"><%= mytitle %></h1>
 <div class="list-content">
 <ul>
-    <%  for( i = 0; i < workcontent.length; i++) { %>
+    <%   workcontent.forEach(function(work){ %>
+        <form action="/workdelete" method="post">
         <div class="item">
-        <input type="checkbox">
-        <p> <%= workcontent[i] %></p>
+        <input type="checkbox"  onChange="this.form.submit()" value="<%= work._id %>" name="worker">
+        </form>
+        <p> <%= work.name%></p>
         </div>
-    <% } %>
+    <% }) %>
     <form action="/" method="POST">
         <div class="lastman">
       <input type="text" placeholder="New-Item" autocomplete="off" name="second">

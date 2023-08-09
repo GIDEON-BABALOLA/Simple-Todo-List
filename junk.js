@@ -47,3 +47,9 @@
 // "en-GB": For British English
 // "hi-IN": For Hindi
 // "ja-JP": For Japanese
+// <%  for( i = 0; i < newcontent.length; i++) { %>
+//     <div class="item">
+//     <input type="checkbox">
+//     <p> <%= newcontent[i].name %></p>
+//     </div>
+// <% } %>

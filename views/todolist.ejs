@@ -2,17 +2,21 @@
 <h1 class="todolist-header"><%= typeofday %></h1>
 <div class="list-content">
 <ul>
-    <%  for( i = 0; i < newcontent.length; i++) { %>
+    <%  newcontent.forEach(function(data){ %>
+        <form action="/delete" method="post">
         <div class="item">
-        <input type="checkbox">
-        <p> <%= newcontent[i] %></p>
+        <input type="checkbox" onChange="this.form.submit()" name="checkbox" value="<%= data._id %>">
+        <input type="hidden" name="malt" value=<%= typeofday  %>>
+        </form>
+        <p> <%= data.name %></p>
         </div>
-    <% } %>
+    <% })%>
     <form action="/" method="POST">
         <div class="lastman">
       <input type="text" placeholder="New-Item" autocomplete="off" name="add">
-       <button type="submit" name="button" class="butt">+</button>
-    </div></form>
+       <button type="submit" name="list" class="butt" value = <%= typeofday %>>+</button>
+    </div>
+</form>
 </ul>
 </div>
 <%- include("footer") -%>
