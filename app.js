@@ -1,13 +1,19 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-const myDater = require(__dirname + "/date.js");
 app.use(bodyParser.urlencoded({extended: true}));
+const myDater = require(__dirname + "/date.js");
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
-const _ = require('lodash');
 const mongoose = require("mongoose");
-mongoose.connect("mongodb+srv://GIDEON-BABALOLA:COVENANT@firstdatabase.ejgnpbe.mongodb.net/?retryWrites=true&w=majority/TODO-LIST", {useNewUrlParser: true}, {useUnifiedTopology:true })
+const _ = require('lodash');
+const secreats = require(__dirname +"/Secreats.js")
+console.log(secreats.mongo.url)
+const url = secreats.mongo.url
+mongoose.connect(url, {
+useNewUrlParser: true,
+useUnifiedTopology:true }
+)
 //An Object Cannot Have A Length In JavaScript
 const itemSchema = new mongoose.Schema({
     name : String
