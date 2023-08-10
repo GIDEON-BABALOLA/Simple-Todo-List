@@ -7,6 +7,7 @@ app.use(express.static("public"));
 app.set('view engine', 'ejs');
 const mongoose = require("mongoose");
 mongoose.connect("mongodb://127.0.0.1:27017/TODO-LIST", {useNewUrlParser: true}, {useUnifiedTopology:true })
+//An Object Cannot Have A Length In JavaScript
 const itemSchema = new mongoose.Schema({
     name : String
 })
@@ -52,7 +53,7 @@ itemModel.find()
     }
     })
 .catch((error)=>{
-    console.log("Error in rendering data", error)
+    console.log("Error in rendering data for the home route", error)
 })
 })
 app.get("/work", function(req, res){
@@ -147,7 +148,7 @@ app.post("/workdelete", (request, response)=>{
             console.log("successfully deleted one work item")
         })
         .catch((error)=>{
-            console.log("unsuccessful in deleting an work item", error)
+            console.log("unsuccessful in deleting one work item", error)
         })
         response.redirect("/work")
     })
