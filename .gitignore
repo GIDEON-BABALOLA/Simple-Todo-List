@@ -1,2 +1,3 @@
 node_modules
+npm-debug.log
 #This is used to ignore all the node modules aspects

@@ -5,8 +5,9 @@ const myDater = require(__dirname + "/date.js");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
+const _ = require('lodash');
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://127.0.0.1:27017/TODO-LIST", {useNewUrlParser: true}, {useUnifiedTopology:true })
+mongoose.connect("mongodb+srv://GIDEON-BABALOLA:COVENANT@firstdatabase.ejgnpbe.mongodb.net/?retryWrites=true&w=majority/TODO-LIST", {useNewUrlParser: true}, {useUnifiedTopology:true })
 //An Object Cannot Have A Length In JavaScript
 const itemSchema = new mongoose.Schema({
     name : String
@@ -153,7 +154,7 @@ app.post("/workdelete", (request, response)=>{
         response.redirect("/work")
     })
     app.get("/:value", (request, response)=>{
-        const customListName = request.params.value;
+        const customListName = _.capitalize(request.params.value);
         customModel.findOne({name :customListName})
 .then((customData)=>{
 if(!customData){
@@ -172,6 +173,7 @@ else{
 console.log("Error in finding custom list name", error)
 })
     })
-app.listen(4000, function(){
+ app.listen(4000, function(){
     console.log("server is running on port 4000")
 })
+//Always ignore your node modules when deploying to heroku
